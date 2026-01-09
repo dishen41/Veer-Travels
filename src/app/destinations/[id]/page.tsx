@@ -44,7 +44,7 @@ export default function DestinationPage({ params }: DestinationPageProps) {
 
   return (
     <div className="bg-background">
-      <header className="relative h-[50vh] w-full">
+      <header className="relative h-[40vh] md:h-[50vh] w-full">
         {heroImage && (
           <Image
             src={heroImage.imageUrl}
@@ -69,16 +69,16 @@ export default function DestinationPage({ params }: DestinationPageProps) {
         </div>
       </header>
       
-      <main className="container mx-auto px-4 py-12">
+      <main className="container mx-auto px-4 py-8 md:py-12">
         <div className="max-w-4xl mx-auto">
-          <div className="mb-12">
-            <h2 className="text-3xl font-bold font-headline mb-4">Overview</h2>
-            <p className="text-muted-foreground text-lg">{destination.description}</p>
+          <div className="mb-8 md:mb-12">
+            <h2 className="text-2xl md:text-3xl font-bold font-headline mb-4">Overview</h2>
+            <p className="text-muted-foreground text-base md:text-lg">{destination.description}</p>
           </div>
           
-          <div className="mb-12">
-            <h2 className="text-3xl font-bold font-headline mb-6">Top Attractions</h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="mb-8 md:mb-12">
+            <h2 className="text-2xl md:text-3xl font-bold font-headline mb-6">Top Attractions</h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
               {destination.topPlaces.map((place) => {
                 const placeImage = getImageById(place.image);
                 return (
@@ -105,8 +105,8 @@ export default function DestinationPage({ params }: DestinationPageProps) {
             </div>
           </div>
 
-          <div className="text-center bg-secondary p-8 rounded-lg">
-            <h2 className="text-3xl font-bold font-headline">Ready to explore {destination.name}?</h2>
+          <div className="text-center bg-secondary p-6 md:p-8 rounded-lg">
+            <h2 className="text-2xl md:text-3xl font-bold font-headline">Ready to explore {destination.name}?</h2>
             <p className="text-muted-foreground mt-2 mb-6">Let us plan the perfect group trip for you.</p>
             <Button asChild size="lg">
               <Link href="/#contact">Plan a Trip Here</Link>

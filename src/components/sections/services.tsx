@@ -32,7 +32,7 @@ export default function Services() {
           <p className="text-muted-foreground mt-2 max-w-2xl mx-auto">We provide end-to-end services to make your group travel seamless and memorable.</p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
           {services.map((service, index) => (
             <div key={index} className="text-center p-6 rounded-lg bg-card/50 shadow-sm hover:shadow-lg transition-shadow">
               <div className="flex justify-center mb-4">

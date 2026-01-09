@@ -45,10 +45,9 @@ export default function InspirationPage({ params }: InspirationPageProps) {
 
   return (
     <div className="bg-background">
-       <header className="relative h-[40vh] w-full bg-secondary">
-        <div className="absolute inset-0" />
+       <header className="relative w-full bg-secondary py-12 md:py-20">
         <div className="container mx-auto h-full flex flex-col justify-center relative z-10 px-4">
-           <h1 className="text-4xl md:text-6xl font-bold font-headline">{inspiration.title}</h1>
+           <h1 className="text-4xl md:text-5xl font-bold font-headline">{inspiration.title}</h1>
            <p className="mt-2 text-lg text-muted-foreground max-w-2xl">{inspiration.details}</p>
         </div>
         <div className="absolute top-4 left-4 md:top-6 md:left-6 z-20">
@@ -61,11 +60,11 @@ export default function InspirationPage({ params }: InspirationPageProps) {
         </div>
       </header>
 
-      <main className="container mx-auto px-4 py-12">
-        <div className="max-w-6xl mx-auto grid lg:grid-cols-3 gap-12">
+      <main className="container mx-auto px-4 py-8 md:py-12">
+        <div className="max-w-6xl mx-auto grid lg:grid-cols-3 gap-8 lg:gap-12">
             <div className="lg:col-span-2">
-                <section id="gallery" className="mb-12">
-                    <h2 className="text-3xl font-bold font-headline mb-6">Happy Group Photos</h2>
+                <section id="gallery" className="mb-8 md:mb-12">
+                    <h2 className="text-2xl md:text-3xl font-bold font-headline mb-6">Happy Group Photos</h2>
                     <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
                         {inspiration.groupImages.map((imgId, index) => {
                             const img = getImageById(imgId);
@@ -80,7 +79,7 @@ export default function InspirationPage({ params }: InspirationPageProps) {
                 </section>
 
                 <section id="testimonials">
-                    <h2 className="text-3xl font-bold font-headline mb-6">Client Stories</h2>
+                    <h2 className="text-2xl md:text-3xl font-bold font-headline mb-6">Client Stories</h2>
                     <div className="space-y-6">
                         {inspiration.testimonials.map((testimonial, index) => (
                             <Card key={index}>
@@ -103,7 +102,7 @@ export default function InspirationPage({ params }: InspirationPageProps) {
                 <div className="sticky top-24">
                      <Card className="bg-secondary">
                         <CardContent className="p-6">
-                            <h3 className="text-2xl font-bold font-headline mb-4">Trip Details</h3>
+                            <h3 className="text-xl md:text-2xl font-bold font-headline mb-4">Trip Details</h3>
                             <ul className="space-y-3">
                                 {inspiration.included.map((item, index) => (
                                     <li key={index} className="flex items-start gap-3">

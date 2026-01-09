@@ -3,7 +3,7 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import * as z from 'zod';
-
+import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import {
   Form,
@@ -16,6 +16,8 @@ import {
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/hooks/use-toast';
+import { Loader2 } from 'lucide-react';
+import { recommendItinerary } from '@/ai/flows/recommend';
 
 const formSchema = z.object({
   name: z.string().min(2, { message: 'Name must be at least 2 characters.' }),
@@ -27,6 +29,8 @@ const formSchema = z.object({
 });
 
 export default function Contact() {
+  const { toast } = useToast();
+  const [isSubmitting, setIsSubmitting] = useState(false);
   
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -40,13 +44,30 @@ export default function Contact() {
     },
   });
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log(values);
-    toast({
-      title: 'Quote Request Submitted!',
-      description: 'Thank you for your inquiry. We will get back to you shortly.',
-    });
-    form.reset();
+  async function onSubmit(values: z.infer<typeof formSchema>) {
+    setIsSubmitting(true);
+    try {
+      // Here you would typically send the form data to your backend
+      console.log(values);
+
+      // Simulate an API call
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      
+      toast({
+        title: 'Quote Request Submitted!',
+        description: 'Thank you for your inquiry. We will get back to you shortly.',
+      });
+      form.reset();
+    } catch (error) {
+      console.error("Submission error:", error);
+      toast({
+        variant: "destructive",
+        title: 'Submission Failed',
+        description: 'Something went wrong. Please try again.',
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   }
   
   return (
@@ -61,8 +82,8 @@ export default function Contact() {
 
         <div className="max-w-4xl mx-auto">
           <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-              <div className="grid md:grid-cols-2 gap-8">
+            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 md:space-y-8">
+              <div className="grid md:grid-cols-2 gap-6 md:gap-8">
                 <FormField
                   control={form.control}
                   name="name"
@@ -148,7 +169,10 @@ export default function Contact() {
                 )}
               />
               <div className="text-center">
-                <Button type="submit" size="lg" className="w-full md:w-auto">Submit Quote Request</Button>
+                <Button type="submit" size="lg" className="w-full md:w-auto" disabled={isSubmitting}>
+                  {isSubmitting && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
+                  {isSubmitting ? 'Submitting...' : 'Submit Quote Request'}
+                </Button>
               </div>
             </form>
           </Form>

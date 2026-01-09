@@ -5,8 +5,8 @@ export default function Footer() {
   return (
     <footer className="bg-secondary text-secondary-foreground">
       <div className="container mx-auto px-4 py-8">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-          <div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
+          <div className="col-span-1 sm:col-span-2 md:col-span-1">
             <Link href="/" className="flex items-center space-x-2 mb-4">
               <Mountain className="h-8 w-8 text-primary" />
               <span className="text-xl font-bold font-headline">VEER TRAVELS</span>
@@ -35,9 +35,9 @@ export default function Footer() {
           <div>
             <h3 className="font-headline font-semibold mb-4">Follow Us</h3>
             <div className="flex space-x-4">
-              <Link href="#" className="hover:text-primary"><Facebook size={20} /></Link>
-              <Link href="#" className="hover:text-primary"><Twitter size={20} /></Link>
-              <Link href="#" className="hover:text-primary"><Instagram size={20} /></Link>
+              <Link href="#" className="text-blue-600 hover:text-blue-800 transition-colors"><Facebook size={24} /></Link>
+              <Link href="#" className="text-sky-500 hover:text-sky-700 transition-colors"><Twitter size={24} /></Link>
+              <Link href="#" className="text-pink-600 hover:text-pink-800 transition-colors"><Instagram size={24} /></Link>
             </div>
           </div>
         </div>

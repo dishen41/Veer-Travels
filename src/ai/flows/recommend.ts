@@ -1,6 +1,5 @@
 'use server';
 
-import { run } from 'genkit';
 import * as z from 'zod';
 import {ai} from '../genkit';
 
@@ -33,16 +32,14 @@ export const recommendItinerary = ai.defineFlow(
     }
     `;
 
-    const llmResponse = await run("generate-recommendation", () => 
-        ai.generate({
-            prompt: prompt,
-            model: 'googleai/gemini-2.5-flash',
-            output: {
-                format: 'json',
-                schema: ItinerarySuggestion,
-            }
-        })
-    );
+    const llmResponse = await ai.generate({
+        prompt: prompt,
+        model: 'gemini-pro',
+        output: {
+            format: 'json',
+            schema: ItinerarySuggestion,
+        }
+    });
     
     const suggestion = llmResponse.output;
     if (!suggestion) {
