@@ -49,7 +49,7 @@ export default function Navbar() {
         </div>
 
         <div className="flex flex-1 items-center justify-end space-x-2">
-           <Button asChild className="hidden md:inline-flex" variant="outline">
+           <Button asChild className="hidden md:inline-flex bg-[#25D366] text-white hover:bg-[#128C7E]" variant="default">
               <Link href="https://wa.me/911234567890" target="_blank" rel="noopener noreferrer">
                 <WhatsAppIcon className="h-5 w-5 mr-2"/>
                 WhatsApp
@@ -86,7 +86,7 @@ export default function Navbar() {
                   ))}
                 </nav>
                 <div className="mt-auto space-y-2">
-                    <Button asChild className="w-full" variant="outline" onClick={() => setIsMobileMenuOpen(false)}>
+                    <Button asChild className="w-full bg-[#25D366] text-white hover:bg-[#128C7E]" variant="default" onClick={() => setIsMobileMenuOpen(false)}>
                         <Link href="https://wa.me/911234567890" target="_blank" rel="noopener noreferrer">
                             <WhatsAppIcon className="h-5 w-5 mr-2"/>
                             WhatsApp

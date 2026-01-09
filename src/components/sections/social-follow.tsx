@@ -12,16 +12,16 @@ export default function SocialFollow() {
                 Stay updated with our latest trips, offers, and travel tips on social media.
             </p>
             <div className="flex space-x-6 mt-6">
-              <Link href="#" className="text-muted-foreground hover:text-primary transition-colors">
-                <Facebook size={28} />
+              <Link href="#" className="text-blue-600 hover:text-blue-800 transition-colors">
+                <Facebook size={36} />
                 <span className="sr-only">Facebook</span>
               </Link>
-              <Link href="#" className="text-muted-foreground hover:text-primary transition-colors">
-                <Twitter size={28} />
+              <Link href="#" className="text-sky-500 hover:text-sky-700 transition-colors">
+                <Twitter size={36} />
                  <span className="sr-only">Twitter</span>
               </Link>
-              <Link href="#" className="text-muted-foreground hover:text-primary transition-colors">
-                <Instagram size={28} />
+              <Link href="#" className="text-pink-600 hover:text-pink-800 transition-colors">
+                <Instagram size={36} />
                  <span className="sr-only">Instagram</span>
               </Link>
             </div>
