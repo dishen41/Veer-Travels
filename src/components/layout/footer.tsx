@@ -27,8 +27,8 @@ export default function Footer() {
           <div>
             <h3 className="font-headline font-semibold mb-4">Contact Us</h3>
             <ul className="space-y-2 text-sm">
-              <li>Email: contact@veertravels.com</li>
-              <li>Phone: +91 12345 67890</li>
+              <li>Email: veertravels77@gmail.com</li>
+              <li>Phone: +91 9016665048</li>
               <li>Address: 123 Travel Lane, New Delhi, India</li>
             </ul>
           </div>
