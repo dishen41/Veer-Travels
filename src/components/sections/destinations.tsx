@@ -1,4 +1,4 @@
-import Link from 'next/image';
+import Link from 'next/link';
 import { Card, CardContent } from '@/components/ui/card';
 import { destinations } from '@/lib/data/destinations';
 import { getImageById } from '@/lib/placeholder-images';

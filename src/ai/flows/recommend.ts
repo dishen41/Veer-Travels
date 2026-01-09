@@ -1,6 +1,6 @@
 'use server';
 
-import {defineFlow, run} from 'genkit';
+import { run } from 'genkit';
 import * as z from 'zod';
 import {ai} from '../genkit';
 
@@ -9,7 +9,7 @@ const ItinerarySuggestion = z.object({
   message: z.string().describe('A compelling message describing a sample itinerary for the user.'),
 });
 
-export const recommendItinerary = defineFlow(
+export const recommendItinerary = ai.defineFlow(
   {
     name: 'recommendItinerary',
     inputSchema: z.object({
@@ -44,7 +44,7 @@ export const recommendItinerary = defineFlow(
         })
     );
     
-    const suggestion = llmResponse.output();
+    const suggestion = llmResponse.output;
     if (!suggestion) {
         throw new Error("Failed to generate AI recommendation.");
     }
