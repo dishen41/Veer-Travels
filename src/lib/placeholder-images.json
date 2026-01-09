@@ -61,6 +61,18 @@
       "imageHint": "switzerland alps"
     },
     {
+      "id": "dest-rajasthan",
+      "description": "Hawa Mahal in Jaipur",
+      "imageUrl": "https://images.unsplash.com/photo-1724382981275-f144e3a12cdb?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxyYWphc3RoYW4lMjBwYWxhY2V8ZW58MHx8fHwxNzY3OTcyNTQxfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "rajasthan palace"
+    },
+    {
+      "id": "dest-thailand",
+      "description": "Long-tail boats on a Thai beach",
+      "imageUrl": "https://images.unsplash.com/photo-1704314315344-cd10b9779ce6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHx0aGFpbGFuZCUyMGJlYWNofGVufDB8fHx8MTc2NzkzOTk0NHww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "thailand beach"
+    },
+    {
       "id": "place-munnar",
       "description": "Tea plantations in Munnar",
       "imageUrl": "https://images.unsplash.com/photo-1650884986392-984358536050?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxtdW5uYXIlMjB0ZWF8ZW58MHx8fHwxNzY3OTU3MzE2fDA&ixlib=rb-4.1.0&q=80&w=1080",
@@ -167,6 +179,42 @@
       "description": "Chapel Bridge in Lucerne",
       "imageUrl": "https://images.unsplash.com/photo-1572041341933-57caa3b8f6d5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxzd2lzcyUyMGJyaWRnZXxlbnwwfHx8fDE3Njc5NTczMTZ8MA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "swiss bridge"
+    },
+    {
+      "id": "place-jaipur",
+      "description": "Jaipur City Palace",
+      "imageUrl": "https://images.unsplash.com/photo-1673807095855-7c6e499c2cd5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxqYWlwdXIlMjBwYWxhY2V8ZW58MHx8fHwxNzY3OTcyNTQxfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "jaipur palace"
+    },
+    {
+      "id": "place-udaipur",
+      "description": "Udaipur Lake Pichola",
+      "imageUrl": "https://images.unsplash.com/photo-1715628255013-153b74854aa0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHx1ZGFpcHVyJTIwbGFrZXxlbnwwfHx8fDE3Njc5NzI1NDF8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "udaipur lake"
+    },
+    {
+      "id": "place-jaisalmer",
+      "description": "Jaisalmer Fort",
+      "imageUrl": "https://images.unsplash.com/photo-1677251486565-8ebade3b1cc4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxqYWlzYWxtZXIlMjBmb3J0fGVufDB8fHx8MTc2Nzk3MjU0MXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "jaisalmer fort"
+    },
+    {
+      "id": "place-bangkok",
+      "description": "Bangkok Grand Palace",
+      "imageUrl": "https://images.unsplash.com/photo-1723909612304-d5e102996011?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxiYW5na29rJTIwcGFsYWNlfGVufDB8fHx8MTc2Nzk3MjU0MXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "bangkok palace"
+    },
+    {
+      "id": "place-phi-phi",
+      "description": "Phi Phi Islands",
+      "imageUrl": "https://images.unsplash.com/photo-1673702649339-2e8a7ee07e6a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxwaGktcGhpJTIwaXNsYW5kc3xlbnwwfHx8fDE3Njc5NzI1NDJ8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "phi-phi islands"
+    },
+    {
+      "id": "place-chiang-mai",
+      "description": "Chiang Mai Temples",
+      "imageUrl": "https://images.unsplash.com/photo-1721038469784-abf8eb8d4653?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxjaGlhbmctbWFpJTIwdGVtcGxlfGVufDB8fHx8MTc2Nzk3MjU0MXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "chiang-mai temple"
     },
     {
       "id": "insp-corporate",

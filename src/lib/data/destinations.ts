@@ -38,6 +38,18 @@ export const destinations: Destination[] = [
     ],
   },
   {
+    id: 'rajasthan',
+    name: 'Rajasthan',
+    image: 'dest-rajasthan',
+    category: 'domestic',
+    description: 'The "Land of Kings", Rajasthan is a vibrant state known for its majestic forts, opulent palaces, and rich cultural heritage. Explore the golden sands of the Thar Desert and immerse yourself in tales of royal valor.',
+    topPlaces: [
+        { name: 'Jaipur City Palace', image: 'place-jaipur' },
+        { name: 'Udaipur Lake Pichola', image: 'place-udaipur' },
+        { name: 'Jaisalmer Fort', image: 'place-jaisalmer' },
+    ],
+  },
+  {
     id: 'dubai',
     name: 'Dubai',
     image: 'dest-dubai',
@@ -71,6 +83,18 @@ export const destinations: Destination[] = [
       { name: 'Interlaken', image: 'place-interlaken' },
       { name: 'Jungfrau Region', image: 'place-jungfrau' },
       { name: 'Lucerne', image: 'place-lucerne' },
+    ],
+  },
+  {
+    id: 'thailand',
+    name: 'Thailand',
+    image: 'dest-thailand',
+    category: 'international',
+    description: 'Thailand is a Southeast Asian country famous for its tropical beaches, opulent royal palaces, ancient ruins and ornate temples displaying figures of Buddha. In Bangkok, the capital, an ultramodern cityscape rises next to quiet canalside communities.',
+    topPlaces: [
+        { name: 'Bangkok Grand Palace', image: 'place-bangkok' },
+        { name: 'Phi Phi Islands', image: 'place-phi-phi' },
+        { name: 'Chiang Mai Temples', image: 'place-chiang-mai' },
     ],
   },
 ];
