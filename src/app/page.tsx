@@ -19,8 +19,3 @@ export default function Home() {
     </>
   );
 }
-
-HEAD
-(Current Code)
-(Incoming Code from the revert)
- parent of 0d46da1...
