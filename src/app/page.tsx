@@ -1,140 +1,93 @@
-'use client';
+"use client"; // This is required for Next.js to work like React
 
-import { useState, useEffect } from 'react';
-import Hero from '@/components/sections/hero';
-import Destinations from '@/components/sections/destinations';
-import Inspirations from '@/components/sections/inspirations';
-import Services from '@/components/sections/services';
-import About from '@/components/sections/about';
-import Contact from '@/components/sections/contact';
-import SocialFollow from '@/components/sections/social-follow';
-import { Globe, Menu, X, ArrowRight, Calendar, Star, Users, ChevronLeft, ChevronRight } from 'lucide-react';
-import { destinations as DESTINATIONS } from '@/lib/data/destinations';
-import { inspirations as INSPIRATIONS } from '@/lib/data/inspirations';
-import { HERO_SLIDES } from '@/lib/data/hero';
-import type { Destination } from '@/lib/types';
-import type { Inspiration } from '@/lib/types';
-import { getImageById } from '@/lib/placeholder-images';
-import Image from 'next/image';
+import React, { useState, useEffect } from 'react';
+import { Menu, X, MapPin, Calendar, Star, Phone, Mail, ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
 
+// --- DATA ---
+const DESTINATIONS = [
+  {
+    id: 1,
+    name: "Kerala",
+    type: "Domestic",
+    image: "https://images.unsplash.com/photo-1602216056096-3b40cc0c9947?q=80&w=1000&auto=format&fit=crop",
+    description: "God's Own Country. Experience the serene backwaters and lush greenery.",
+    topPlaces: [
+      { name: "Alleppey", image: "https://images.unsplash.com/photo-1593693397690-362cb9666fc2?q=80&w=600&auto=format&fit=crop" },
+      { name: "Munnar", image: "https://images.unsplash.com/photo-1516690561799-46d8f74f9abf?q=80&w=600&auto=format&fit=crop" }
+    ]
+  },
+  {
+    id: 2,
+    name: "Dubai",
+    type: "International",
+    image: "https://images.unsplash.com/photo-1512453979798-5ea904ac6605?q=80&w=1000&auto=format&fit=crop",
+    description: "The City of Gold. Futuristic skyline, desert safaris, and luxury shopping.",
+    topPlaces: [
+      { name: "Burj Khalifa", image: "https://images.unsplash.com/photo-1582672060674-bc2bd808a8b5?q=80&w=600&auto=format&fit=crop" },
+      { name: "Palm Jumeirah", image: "https://images.unsplash.com/photo-1512453979798-5ea904ac6605?q=80&w=600&auto=format&fit=crop" }
+    ]
+  }
+];
+
+// --- MAIN COMPONENT ---
 export default function Home() {
-  const [activeView, setActiveView] = useState('home');
-  const [selectedItem, setSelectedItem] = useState<Destination | Inspiration | null>(null);
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-
-  const goHome = () => {
-    setActiveView('home');
-    setSelectedItem(null);
-    window.scrollTo(0, 0);
-  };
-
-  const openDestination = (destination: Destination) => {
-    setActiveView('destination');
-    setSelectedItem(destination);
-    window.scrollTo(0, 0);
-  };
-
-  const openInspiration = (inspiration: Inspiration) => {
-    setActiveView('inspiration');
-    setSelectedItem(inspiration);
-    window.scrollTo(0, 0);
-  };
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className="min-h-screen bg-background text-foreground font-sans">
-      {/* 1. NAVBAR - This is now handled by the main layout */}
-      
-      {/* --- CONDITIONAL RENDERING --- */}
-
-      {activeView === 'home' && (
-        <>
-          {/* 2. HERO SLIDER */}
-          <Hero />
-
-          {/* 3. DESTINATIONS GRID */}
-           <section id="destinations" className="py-20 px-4">
-              <Destinations onDestinationClick={openDestination} />
-           </section>
-
-          {/* 4. TRIP INSPIRATIONS */}
-           <section id="inspirations" className="py-20 bg-secondary px-4">
-            <Inspirations onInspirationClick={openInspiration} />
-          </section>
-
-          {/* 5. SERVICE / PROCESS */}
-          <Services />
-
-          {/* 6. ABOUT US */}
-          <About />
-
-          {/* 7. CONTACT FORM */}
-          <Contact />
-          
-          {/* 8. SOCIAL FOLLOW */}
-          <SocialFollow />
-        </>
-      )}
-
-      {/* DETAIL VIEW: DESTINATIONS */}
-      {activeView === 'destination' && selectedItem && (
-        <div className="pt-20 min-h-screen animate-in fade-in zoom-in duration-300">
-          <div className="relative h-[50vh]">
-            <Image src={getImageById(selectedItem.image)!.imageUrl} className="w-full h-full object-cover" fill alt={selectedItem.title || (selectedItem as Destination).name}/>
-            <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
-              <div className="text-center text-white">
-                <h1 className="text-5xl font-bold mb-2">{(selectedItem as Destination).name}</h1>
-                <p className="text-xl">{(selectedItem as Destination).category}</p>
-              </div>
+    <div className="min-h-screen bg-white text-gray-800">
+      {/* Navbar */}
+      <nav className="fixed top-0 w-full bg-white/90 backdrop-blur-md z-50 shadow-sm">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-between h-16 items-center">
+            <div className="flex items-center gap-2">
+              <span className="text-2xl font-bold text-blue-900">VEER TRAVELS</span>
             </div>
-            <button onClick={goHome} className="absolute top-24 left-4 bg-white/20 backdrop-blur text-white px-4 py-2 rounded-full flex items-center gap-2 hover:bg-white/40 transition">
-              <ChevronLeft /> Back to Home
-            </button>
-          </div>
-          
-          <div className="max-w-6xl mx-auto px-4 py-12">
-            <h2 className="text-2xl font-bold mb-6">Top Places to Visit in {(selectedItem as Destination).name}</h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {(selectedItem as Destination).topPlaces.map((place: any, index: number) => {
-                const placeImage = getImageById(place.image);
-                return (
-                  <div key={index} className="rounded-xl overflow-hidden shadow-md">
-                    {placeImage && <Image src={placeImage.imageUrl} className="h-48 w-full object-cover" width={600} height={400} alt={place.name} />}
-                    <div className="p-4 bg-white">
-                      <h3 className="font-bold text-lg">{place.name}</h3>
-                    </div>
-                  </div>
-                )
-              })}
-            </div>
-            <div className="mt-12 text-center">
-               <p className="text-muted-foreground mb-4">Interested in a group trip to {(selectedItem as Destination).name}?</p>
-               <a href="#contact" className="inline-block bg-primary text-primary-foreground px-8 py-3 rounded-full font-bold hover:bg-primary/90">Get Custom Quote</a>
-            </div>
-          </div>
-        </div>
-      )}
-
-      {/* DETAIL VIEW: INSPIRATIONS */}
-      {activeView === 'inspiration' && selectedItem && (
-        <div className="pt-20 min-h-screen animate-in fade-in slide-in-from-bottom-4 duration-300">
-           <div className="bg-primary/80 text-primary-foreground py-16 px-4 text-center relative">
-              <button onClick={goHome} className="absolute top-24 left-4 flex items-center gap-2 opacity-70 hover:opacity-100">
-                <ChevronLeft /> Back
+            
+            {/* Desktop Menu */}
+            <div className="hidden md:flex items-center space-x-8">
+              <a href="#" className="hover:text-blue-600 transition">Home</a>
+              <a href="#destinations" className="hover:text-blue-600 transition">Destinations</a>
+              <a href="#contact" className="hover:text-blue-600 transition">Contact</a>
+              <button className="bg-blue-600 text-white px-5 py-2 rounded-full hover:bg-blue-700 transition">
+                Request Quote
               </button>
-              <h1 className="text-4xl font-bold mb-2">{selectedItem.title}</h1>
-           </div>
-           <div className="max-w-4xl mx-auto px-4 py-12">
-              <div className="bg-card rounded-xl shadow-lg p-8 mb-8 flex flex-col md:flex-row gap-8 items-center">
-                 <Image src={getImageById(selectedItem.image)!.imageUrl} className="w-full md:w-1/2 rounded-lg" width={600} height={400} alt={selectedItem.title} />
-                 <div>
-                    <h3 className="text-2xl font-bold mb-4">About this Experience</h3>
-                    <p className="text-muted-foreground mb-6">{selectedItem.description}</p>
-                 </div>
-              </div>
-           </div>
+            </div>
+
+            {/* Mobile Menu Button */}
+            <div className="md:hidden">
+              <button onClick={() => setIsOpen(!isOpen)}>
+                {isOpen ? <X /> : <Menu />}
+              </button>
+            </div>
+          </div>
         </div>
-      )}
+
+        {/* Mobile Menu */}
+        {isOpen && (
+          <div className="md:hidden bg-white border-t p-4 space-y-4">
+            <a href="#" className="block py-2">Home</a>
+            <a href="#destinations" className="block py-2">Destinations</a>
+            <a href="#contact" className="block py-2">Contact</a>
+          </div>
+        )}
+      </nav>
+
+      {/* Simple Hero */}
+      <div className="relative h-screen flex items-center justify-center bg-blue-900 text-white">
+        <div className="text-center px-4">
+          <h1 className="text-4xl md:text-6xl font-bold mb-4">Explore the World with Veer Travels</h1>
+          <p className="text-xl md:text-2xl mb-8 opacity-90">Custom Group Trips | Corporate | Family</p>
+          <button className="bg-orange-500 hover:bg-orange-600 text-white px-8 py-3 rounded-full text-lg font-semibold transition">
+            Start Planning
+          </button>
+        </div>
+      </div>
 
     </div>
   );
 }
+
+HEAD
+(Current Code)
+(Incoming Code from the revert)
+ parent of 0d46da1...
