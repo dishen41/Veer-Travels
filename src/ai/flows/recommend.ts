@@ -1,36 +1,27 @@
 'use server';
 
 import { ai } from '@/ai/genkit';
-import { z } from 'zod';
+import { ItinerarySchema, ItineraryRecommendation } from '@/ai/schemas';
 
-export const ItinerarySchema = z.object({
-  destination: z.string().describe('The destination of the trip.'),
-  groupInfo: z.string().describe('Information about the group and their requirements.'),
-});
+export async function recommendItinerary(prompt: import('zod').infer<typeof ItinerarySchema>) {
+  const recommendItineraryFlow = ai.defineFlow(
+    {
+      name: 'recommendItinerary',
+      inputSchema: ItinerarySchema,
+      outputSchema: ItineraryRecommendation,
+    },
+    async (prompt) => {
+      const llmResponse = await ai.generate({
+        prompt: `Recommend an itinerary for a trip to ${prompt.destination} for a group with the following requirements: ${prompt.groupInfo}.`,
+        model: 'googleai/gemini-1.5-flash-preview',
+        output: {
+          schema: ItineraryRecommendation,
+        },
+      });
 
-export const ItineraryRecommendation = z.object({
-  itinerary: z.array(z.object({
-    day: z.number().describe('The day number of the itinerary.'),
-    activities: z.array(z.string()).describe('A list of activities for the day.'),
-  })),
-  suggestions: z.array(z.string()).describe('Additional suggestions for the trip.'),
-});
+      return llmResponse.output()!;
+    }
+  );
 
-export const recommendItinerary = ai.defineFlow(
-  {
-    name: 'recommendItinerary',
-    inputSchema: ItinerarySchema,
-    outputSchema: ItineraryRecommendation,
-  },
-  async (prompt) => {
-    const llmResponse = await ai.generate({
-      prompt: `Recommend an itinerary for a trip to ${prompt.destination} for a group with the following requirements: ${prompt.groupInfo}.`,
-      model: 'googleai/gemini-1.5-flash-preview',
-      output: {
-        schema: ItineraryRecommendation,
-      },
-    });
-
-    return llmResponse.output()!;
-  }
-);
+  return await recommendItineraryFlow(prompt);
+}
