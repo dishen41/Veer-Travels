@@ -3,11 +3,12 @@ import Image from 'next/image';
 import { Card, CardContent } from '@/components/ui/card';
 import { inspirations } from '@/lib/data/inspirations';
 import { getImageById } from '@/lib/placeholder-images';
+import type { Inspiration } from '@/lib/types';
 
-const InspirationCard = ({ inspiration }: { inspiration: typeof inspirations[0] }) => {
+const InspirationCard = ({ inspiration, onClick }: { inspiration: Inspiration, onClick: (item: Inspiration) => void }) => {
     const imageData = getImageById(inspiration.image);
     return (
-        <Link href={`/inspirations/${inspiration.id}`} className="block group">
+        <div onClick={() => onClick(inspiration)} className="block group cursor-pointer">
             <Card className="overflow-hidden transition-all duration-300 ease-in-out hover:shadow-xl hover:-translate-y-1">
                 <CardContent className="p-0">
                     <div className="relative h-80 w-full">
@@ -27,22 +28,20 @@ const InspirationCard = ({ inspiration }: { inspiration: typeof inspirations[0] 
                     </div>
                 </CardContent>
             </Card>
-        </Link>
+        </div>
     );
 }
 
-export default function Inspirations() {
+export default function Inspirations({ onInspirationClick }: { onInspirationClick: (item: Inspiration) => void }) {
   return (
-    <section id="inspirations" className="py-16 md:py-24 bg-secondary">
-      <div className="container mx-auto px-4">
+    <section id="inspirations" className="container mx-auto">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold font-headline">Trip Inspirations</h2>
           <p className="text-muted-foreground mt-2 max-w-2xl mx-auto">Get inspired for your next group journey with our curated travel themes.</p>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            {inspirations.map(item => <InspirationCard key={item.id} inspiration={item} />)}
+            {inspirations.map(item => <InspirationCard key={item.id} inspiration={item} onClick={onInspirationClick} />)}
         </div>
-      </div>
     </section>
   );
 }
